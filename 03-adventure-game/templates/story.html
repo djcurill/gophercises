@@ -4,14 +4,81 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Choose Your Own Adventure</title>
+	<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+	<style>
+		body {
+			font-family: 'Lora', Georgia, serif;
+			font-size: 1.1rem;
+			line-height: 1.8;
+			color: #1a1a1a;
+			background: #faf9f7;
+			margin: 0;
+			min-height: 100vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 40px 24px;
+		}
+
+		.hero {
+			max-width: 560px;
+			width: 100%;
+			background: #f0ebe0;
+			padding: 56px 64px;
+		}
+
+		h1 {
+			font-size: 1.2rem;
+			font-weight: 400;
+			letter-spacing: 0.04em;
+			margin-bottom: 2em;
+			color: #888;
+			text-align: center;
+		}
+
+		p {
+			margin-bottom: 1.2em;
+		}
+
+		ul {
+			list-style: none;
+			padding: 0;
+			margin-top: 2.4em;
+			border-top: 1px solid #e0ddd8;
+			padding-top: 1.6em;
+			display: flex;
+			flex-direction: column;
+			gap: 6px;
+		}
+
+		li a {
+			text-decoration: none;
+			font-style: italic;
+			transition: color 0.15s;
+		}
+
+		li a:hover {
+			color: #888;
+		}
+	</style>
 </head>
 
 <body>
+	<div class="hero">
+		<h1>{{.Title}}</h1>
 
+		{{range .Paragraphs}}
+		<p>{{.}}</p>
+		{{end}}
+
+		{{if .Options}}
+		<ul>
+			{{range .Options}}
+			<li><a href="http://localhost:8080/{{.Arc}}">{{.Text}}</a></li>
+			{{end}}
+		</ul>
+		{{end}}
+	</div>
 </body>
-<h1>{{.Title}}</h1>
-{{range .Paragraphs}}
-<p>{{.}}</p>
-{{end}}
 
 </html>
