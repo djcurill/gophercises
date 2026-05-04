@@ -25,11 +25,11 @@ To list todos:
 	task list
 `,
 	PersistentPreRunE: func(cmd *cobra.Command, args []string) error {
-		homeDir, err := os.UserHomeDir()
+		dir, err := os.Getwd()
 		if err != nil {
 			return err
 		}
-		path := filepath.Join(homeDir, "tasks.db")
+		path := filepath.Join(dir, "tasks.db")
 		err = tasks.InitDb(path)
 		return err
 	},
