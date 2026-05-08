@@ -17,7 +17,6 @@ type Task struct {
 
 func InitDb(path string) error {
 	var err error
-	fmt.Println("Opening db at path:", path)
 
 	db, err = bolt.Open(path, 0600, nil)
 	if err != nil {
@@ -44,7 +43,6 @@ func initBuckets(db *bolt.DB) error {
 }
 
 func CloseDb() error {
-	fmt.Println("shutting down db")
 	err := db.Close()
 	return err
 }
